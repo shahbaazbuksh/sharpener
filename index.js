@@ -1,32 +1,37 @@
-// index.js
-
-// Get form element
+// Get form and user list elements
 var form = document.getElementById("my-form");
+var userList = document.getElementById("user-list");
 
-// Add submit event listener to the form
-form.addEventListener("submit", function (e) {
+// Submit form event
+form.addEventListener("submit", submitForm);
+
+// Submit form function
+function submitForm(e) {
   e.preventDefault();
 
-  // Get user input values
-  var nameInput = document.getElementById("name");
-  var emailInput = document.getElementById("email");
-  var name = nameInput.value;
-  var email = emailInput.value;
+  // Get input values
+  var nameInput = document.getElementById("name").value;
+  var emailInput = document.getElementById("email").value;
 
   // Create user object
   var user = {
-    name: name,
-    email: email,
+    name: nameInput,
+    email: emailInput,
   };
 
-  // Store user object in localStorage
+  // Display user details on the screen
+  var userItem = document.createElement("div");
+  userItem.innerHTML =
+    "<strong>Name:</strong> " +
+    user.name +
+    ", <strong>Email:</strong> " +
+    user.email;
+  userList.appendChild(userItem);
+
+  // Clear form inputs
+  document.getElementById("name").value = "";
+  document.getElementById("email").value = "";
+
+  // Store user object in local storage
   localStorage.setItem("user", JSON.stringify(user));
-
-  // Clear input fields
-  nameInput.value = "";
-  emailInput.value = "";
-
-  // Display success message
-  var messageDiv = document.querySelector(".msg");
-  messageDiv.textContent = "User details stored in localStorage.";
-});
+}
