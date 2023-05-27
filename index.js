@@ -1,7 +1,9 @@
-// Get the form element
+// index.js
+
+// Get form element
 var form = document.getElementById("my-form");
 
-// Listen for form submit event
+// Add submit event listener to the form
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -17,14 +19,14 @@ form.addEventListener("submit", function (e) {
     email: email,
   };
 
-  // Store user object in local storage
+  // Store user object in localStorage
   localStorage.setItem("user", JSON.stringify(user));
 
-  // Reset form inputs
+  // Clear input fields
   nameInput.value = "";
   emailInput.value = "";
 
   // Display success message
-  var msgDiv = document.querySelector(".msg");
-  msgDiv.textContent = "User details saved successfully.";
+  var messageDiv = document.querySelector(".msg");
+  messageDiv.textContent = "User details stored in localStorage.";
 });
