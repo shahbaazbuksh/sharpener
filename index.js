@@ -13,35 +13,36 @@ filter.addEventListener("keyup", filterItems);
 function addItem(e) {
   e.preventDefault();
 
-  // Get input value
+  // Get input values
   var newItem = document.getElementById("item").value;
+  var newDescription = document.getElementById("description").value;
 
   // Create new li element
   var li = document.createElement("li");
   // Add class
   li.className = "list-group-item";
-  // Add text node with input value
-  li.appendChild(document.createTextNode(newItem));
+
+  // Create a div for item name and description
+  var itemDiv = document.createElement("div");
+
+  // Add text node with input value for item name
+  itemDiv.appendChild(document.createTextNode(newItem));
+  // Add line break
+  itemDiv.appendChild(document.createElement("br"));
+  // Add text node with input value for item description
+  itemDiv.appendChild(document.createTextNode(newDescription));
+
+  // Append itemDiv to li
+  li.appendChild(itemDiv);
 
   // Create del button element
   var deleteBtn = document.createElement("button");
-
   // Add classes to del button
   deleteBtn.className = "btn btn-danger btn-sm float-right delete";
-  // Append text node
+  // Append text node to delete button
   deleteBtn.appendChild(document.createTextNode("X"));
-  // Append button to li
+  // Append delete button to li
   li.appendChild(deleteBtn);
-
-  // Create edit button element
-  var editBtn = document.createElement("button");
-
-  // Add classes to edit button
-  editBtn.className = "btn btn-primary btn-sm float-right edit";
-  // Append text node
-  editBtn.appendChild(document.createTextNode("Edit"));
-  // Append button to li
-  li.appendChild(editBtn);
 
   // Append li to list
   itemList.appendChild(li);
