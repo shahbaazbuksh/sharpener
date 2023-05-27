@@ -5,6 +5,9 @@ var userList = document.getElementById("user-list");
 // Submit form event
 form.addEventListener("submit", submitForm);
 
+// Edit user event delegation
+userList.addEventListener("click", editUser);
+
 // Submit form function
 function submitForm(e) {
   e.preventDefault();
@@ -23,6 +26,7 @@ function submitForm(e) {
   var userItem = document.createElement("div");
   userItem.innerHTML = `
     <strong>Name:</strong> ${user.name}, <strong>Email:</strong> ${user.email}
+    <button class="edit-btn">Edit</button>
     <button class="delete-btn">Delete</button>
   `;
   userList.appendChild(userItem);
@@ -50,21 +54,51 @@ function loadUserData() {
     var userItem = document.createElement("div");
     userItem.innerHTML = `
       <strong>Name:</strong> ${user.name}, <strong>Email:</strong> ${user.email}
+      <button class="edit-btn">Edit</button>
       <button class="delete-btn">Delete</button>
     `;
     userList.appendChild(userItem);
   });
 }
 
-// Delete user event delegation
-userList.addEventListener("click", deleteUser);
+// Edit user function
+function editUser(e) {
+  if (e.target.classList.contains("edit-btn")) {
+    var userItem = e.target.parentElement;
+    var userName = userItem.querySelector("strong").textContent;
+    var userEmail = userItem.querySelector("strong + strong").textContent;
+
+    var newName = prompt("Enter new name:", userName);
+    var newEmail = prompt("Enter new email:", userEmail);
+
+    if (newName && newEmail) {
+      userName = newName.trim();
+      userEmail = newEmail.trim();
+
+      var users = JSON.parse(localStorage.getItem("users")) || [];
+      users.forEach(function (user) {
+        if (user.name === userName && user.email === userEmail) {
+          user.name = newName;
+          user.email = newEmail;
+        }
+      });
+
+      localStorage.setItem("users", JSON.stringify(users));
+      userItem.innerHTML = `
+        <strong>Name:</strong> ${newName}, <strong>Email:</strong> ${newEmail}
+        <button class="edit-btn">Edit</button>
+        <button class="delete-btn">Delete</button>
+      `;
+    }
+  }
+}
 
 // Delete user function
 function deleteUser(e) {
   if (e.target.classList.contains("delete-btn")) {
     var userItem = e.target.parentElement;
     var userName = userItem.querySelector("strong").textContent;
-    var userEmail = userItem.querySelector("strong").nextSibling.textContent;
+    var userEmail = userItem.querySelector("strong + strong").textContent;
 
     var users = JSON.parse(localStorage.getItem("users")) || [];
     users = users.filter(function (user) {
