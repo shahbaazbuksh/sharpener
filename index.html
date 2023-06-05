@@ -3,33 +3,52 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>JS For Beginners</title>
-    <link rel="stylesheet" href="styles.css" />
+    <title>Expense Tracker</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
   </head>
   <body>
-    <header>
-      <h1>JS For Beginners</h1>
-    </header>
-
-    <section class="container">
-      <form id="my-form">
-        <h1>Add User</h1>
-        <div class="msg"></div>
-        <div>
-          <label for="name">Name:</label>
-          <input type="text" id="name" />
+    <div class="container mt-4">
+      <h1>Expense Tracker</h1>
+      <form id="expenseForm">
+        <div class="form-group">
+          <label for="expenseName">Expense Name</label>
+          <input type="text" class="form-control" id="expenseName" required />
         </div>
-        <div>
-          <label for="email">Email:</label>
-          <input type="text" id="email" />
+        <div class="form-group">
+          <label for="expenseAmount">Amount</label>
+          <input
+            type="number"
+            class="form-control"
+            id="expenseAmount"
+            required
+          />
         </div>
-        <input class="btn" type="submit" value="Submit" />
+        <div class="form-group">
+          <label for="expenseCategory">Category</label>
+          <input
+            type="text"
+            class="form-control"
+            id="expenseCategory"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Add Expense</button>
       </form>
-      <div id="user-list"></div>
-      <!-- New div to display user details -->
-    </section>
-
-    <script src="index.js"></script>
+      <table id="expenseTable" class="table mt-4">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Category</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <script src="script.js"></script>
   </body>
 </html>
