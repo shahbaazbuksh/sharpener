@@ -3,52 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Expense Tracker</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
     />
+    <title>Axios Crash Course</title>
   </head>
   <body>
-    <div class="container mt-4">
-      <h1>Expense Tracker</h1>
-      <form id="expenseForm">
-        <div class="form-group">
-          <label for="expenseName">Expense Name</label>
-          <input type="text" class="form-control" id="expenseName" required />
-        </div>
-        <div class="form-group">
-          <label for="expenseAmount">Amount</label>
-          <input
-            type="number"
-            class="form-control"
-            id="expenseAmount"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="expenseCategory">Category</label>
-          <input
-            type="text"
-            class="form-control"
-            id="expenseCategory"
-            required
-          />
-        </div>
-        <button type="submit" class="btn btn-primary">Add Expense</button>
-      </form>
-      <table id="expenseTable" class="table mt-4">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Amount</th>
-            <th>Category</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
+    <div class="container my-5">
+      <div class="text-center">
+        <h1 class="display-4 text-center mb-3">Axios Crash Course</h1>
+        <button class="btn btn-primary my-3" id="get">GET</button>
+        <button class="btn btn-info" id="post">POST</button>
+        <button class="btn btn-warning" id="update">PUT/PATCH</button>
+        <button class="btn btn-danger" id="delete">DELETE</button>
+        <button class="btn btn-secondary" id="sim">Sim Requests</button>
+        <button class="btn btn-secondary" id="headers">Custom Headers</button>
+        <button class="btn btn-secondary" id="transform">Transform</button>
+        <button class="btn btn-secondary" id="error">Error Handling</button>
+        <button class="btn btn-secondary" id="cancel">Cancel</button>
+      </div>
+      <hr />
+      <div id="res"></div>
     </div>
-    <script src="script.js"></script>
+
+    <script src="main.js"></script>
   </body>
 </html>
