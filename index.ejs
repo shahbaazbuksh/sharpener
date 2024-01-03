@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Appointment App</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Booking Appointment App</h1>
+    <ul>
+        <% appointments.forEach(appointment => { %>
+            <li>
+                <%= appointment.name %> - <%= appointment.phone %> - <%= appointment.email %>
+                <form action="/update/<%= appointment.id %>" method="get"><button type="submit">Update</button></form>
+                <form action="/delete/<%= appointment.id %>" method="post"><button type="submit">Delete</button></form>
+            </li>
+        <% }); %>
+    </ul>
+    <a href="/new">New Appointment</a>
+</body>
+</html>
